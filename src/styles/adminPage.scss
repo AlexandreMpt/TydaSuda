@@ -1,0 +1,226 @@
+*{
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+ul,li {
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+a{
+    text-decoration: none;
+    font-family: Segoe UI;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+p{
+    color: rgb(45, 41, 40);
+    font-family: Segoe UI;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+h1{
+    color: rgb(45, 41, 40);
+    font-family: Segoe UI;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 64px;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+h2{
+    color: rgb(30, 30, 30);
+    font-family: Segoe UI;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 64px;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+h3{
+    color: rgb(30, 30, 30);
+    font-family: Segoe UI;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@font-face {
+    font-family: SegoeUI;
+    src:
+        local("Segoe UI Light"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff2) format("woff2"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff) format("woff"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.ttf) format("truetype");
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: SegoeUI;
+    src:
+        local("Segoe UI Semilight"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff2) format("woff2"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff) format("woff"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.ttf) format("truetype");
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: SegoeUI;
+    src:
+        local("Segoe UI"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff2) format("woff2"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff) format("woff"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.ttf) format("truetype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: SegoeUI;
+    src:
+        local("Segoe UI Bold"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff2) format("woff2"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff) format("woff"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.ttf) format("truetype");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: SegoeUI;
+    src:
+        local("Segoe UI Semibold"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff2) format("woff2"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff) format("woff"),
+        url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.ttf) format("truetype");
+    font-weight: 700;
+}
+
+.admin{
+    padding: 60px 0 200px 0;
+    .active-btn{
+        color: rgb(83, 187, 1);
+        border: 2px solid rgb(83, 187, 1);
+    }
+    &__navbar{
+        margin-left: 0px;
+        display: flex;
+        &__btn{
+            margin-right: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 160px;
+            height: 36px;
+            color: rgb(45, 41, 40);
+            font-family: Segoe UI;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 20.8px;
+            letter-spacing: 0%;
+            text-align: center;
+            border: 2px solid rgb(45, 41, 40);
+            border-radius: 6.4px;
+        }
+    }
+    &__filter{
+        margin: 20px 0 0 0px;
+        width: 353px;
+        height: 42px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: rgb(30, 30, 30);
+        font-family: Segoe UI;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 21px;
+        letter-spacing: 0%;
+        text-align: left;
+        padding-left: 30px;
+        border: 2px solid rgb(45, 41, 40);
+        border-radius: 8px;
+    }
+    &__block{
+        display: flex;
+        &__content{
+            padding: 6px;
+            margin: 20px 0 0 0px;
+            width: 950px;
+            height: 796px;
+            table{
+                border: 2px solid black; /* Граница вокруг всей таблицы */
+                border-collapse: collapse; /* Объединяет границы таблицы */
+                thead{
+                    width: 950px;
+                    font-size: 12px;
+                    font-family: Segoe UI;
+                }
+                tr{
+                    width: 950px;
+                    font-size: 12px;
+                    font-family: Segoe UI;
+                }
+                button{
+                    all: unset;
+                    color: rgb(83, 187, 1);
+                    font-family: Segoe UI;
+                    font-size: 12px;
+                    font-weight: 400;
+                    line-height: 20.8px;
+                    letter-spacing: 0%;
+                    text-align: center;
+                }
+                th, td {
+                    border: 2px solid black; /* Границы ячеек */
+                    padding: 2px; /* Отступы внутри ячеек */
+                }
+            }
+        }
+        &__filter{
+            h3{
+                margin-bottom: 15px;
+                margin-left: 18px;
+                font-size: 18px;
+            }
+            &__btn{
+                margin: 0 0 6px 25px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 160px;
+                height: 36px;
+                color: rgb(45, 41, 40);
+                font-family: Segoe UI;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 20.8px;
+                letter-spacing: 0%;
+                text-align: center;
+                border: 2px solid rgb(45, 41, 40);
+                border-radius: 6.4px;
+            }
+        }
+    }
+}

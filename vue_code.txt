@@ -1,0 +1,1632 @@
+﻿<template>
+  <section class="about-us" id="about-us">
+    <div class="container">
+      <h1>О нас</h1>
+      <p>Первый заказ, выполненный курьерской службой «Туда-Сюда», был совершен в январе 2023 года. Наша миссия — доставлять ваши заказы точно в нужное время и место. Мы можем начать выполнять заказ через несколько минут после его поступления или организовать доставку в заранее определенное время.</p>
+      <div class="about-us__video-container">
+        <div class="about-us__video-wrapper">
+          <iframe width="1160" height="520" src="https://www.youtube.com/embed/uyIZ2ORH6pQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>                       
+      <p>Для обеспечения оперативной доставки мы работаем с курьерами, оснащенными GPS-устройствами. Как только вы размещаете заказ, наш администратор определяет ближайшего доступного курьера и назначает на заказ. У нас всегда есть свободные курьеры, готовые немедленно приступить к исполнению заказа по оптимальному маршруту, заранее спланированному нами. Наш рекорд составляет всего <span>60 минут</span> с момента размещения заказа!
+        <br><br>
+        Мы понимаем, как важна для вас своевременная доставка, <span>поэтому гарантируем выполнение доставки и сохранность товара</span>, иначе мы вернем вам деньги! Вы также можете отследить статус вашего заказа в личном кабинете. 
+        <br><br>
+        Оплатить доставку можно любым удобным для вас способом: наличными курьеру по любому адресу маршрута или безналичным расчетом через наш сайт. Мы стремимся сделать процесс доставки максимально удобным и прозрачным для вас.</p>
+      <div class="about-us__payment-methods__block">
+        <h2>Способы оплаты</h2>
+        <p>Закажите доставку прямо сейчас!</p>
+        <div class="about-us__payment-methods__block__methods">
+          <div class="about-us__payment-methods__block__methods__metod">
+            <img src="/images/main-page/cash.svg" alt="">
+            <p>Наличными</p>
+          </div>
+          <div class="about-us__payment-methods__block__methods__metod">
+            <img src="/images/main-page/card.svg" alt="">
+            <p>Картой</p>
+          </div>
+          <div class="about-us__payment-methods__block__methods__metod">
+            <img src="/images/main-page/preface.svg" alt="">
+            <p>Предоплата</p>
+          </div>
+        </div>
+        <button class="about-us__payment-methods__block__button" @click="handleOrderClick">Заказать доставку</button>
+      </div>
+      <p>Наша команда курьеров готова доставить ваш заказ в любое время и в любую точку города. Мы гордимся тем, что можем предложить вам <span>надежный и быстрый сервис</span>, который уже завоевал доверие множества клиентов. С каждым новым заказом мы стремимся улучшить наш сервис и сделать ваш опыт еще более приятным. Выбирайте «Туда-Сюда» для всех ваших потребностей в доставке — мы всегда рядом и готовы помочь!</p>
+    </div>
+  </section>
+</template>
+
+<script>
+export default {
+  methods: {
+    scrollToOrder() {
+      const element = document.getElementById('delivery-order');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    },
+    handleOrderClick() {
+      // Переходим на главную страницу
+      window.location.href = '/'; // Укажите здесь URL вашей главной страницы
+
+      // После загрузки главной страницы, прокручиваем к нужному разделу
+      setTimeout(() => {
+        this.scrollToOrder();
+      }, 500); // Подождите некоторое время перед прокруткой, чтобы страница успела загрузиться
+    },
+    handleSubmit() {
+      // Обработка формы
+    }
+  }
+};
+</script>
+
+<style scoped>
+@import '/src/styles/main.scss';
+</style>
+<template>
+    <section class="delivery-order" id="delivery-order">
+      <div class="container">
+        <h2>Заказать доставку</h2>
+        <div class="delivery-order__block">
+          <img src="/images/main-page/clover.svg" alt="">
+          <div class="delivery-order__block__form">
+            <form class="delivery-form" @submit.prevent="handleSubmit">
+              <div class="form-group">
+                <img src="/images/main-page/mark-form.svg" alt="">
+                <input type="text" id="from" name="from" placeholder="Откуда">
+              </div>
+              <div class="form-group">
+                <img src="/images/main-page/mark-form.svg" alt="">
+                
+                <input type="text" id="to" name="to" placeholder="Куда">
+              </div>
+              <div class="form-group">
+                <img src="/images/main-page/calendar-form.svg" alt="">
+                <input type="datetime-local" id="datetime" name="datetime">
+              </div>
+              <div class="form-group transport-options">
+                <input type="radio" id="walk" name="transport" value="Пешком">
+                <label for="walk">Пешком</label>
+                <input type="radio" id="car" name="transport" value="Автомобиль">
+                <label for="car">Автомобиль</label>
+                <input type="radio" id="truck" name="transport" value="Грузовой">
+                <label for="truck">Грузовой</label>
+              </div>
+              <div class="form-group">
+                <img src="/images/main-page/box-form.svg" alt="">
+                <select id="item" name="item">
+                  <option value="" disabled selected>Товар</option>
+                  <option value="Документы">Документы</option>
+                  <option value="Подарок">Подарок</option>
+                  <option value="Мебель">Мебель</option>
+                  <option value="Одежда">Одежда</option>
+                  <option value="Электроника">Электроника</option>
+                  <option value="Бытовая техника">Бытовая техника</option>
+                  <option value="Продукты питания">Продукты питания</option>
+                  <option value="Косметика и парфюмерия">Косметика и парфюмерия</option>
+                  <option value="Книги">Книги</option>
+                  <option value="Игрушки">Игрушки</option>
+                  <option value="Другое">Другое</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <img src="/images/main-page/rub-form.svg" alt="">
+                <input type="text" id="total" name="total" placeholder="Итого">
+              </div>
+              <button type="submit">Заказать доставку</button>
+            </form>                    
+          </div>
+        </div>
+      </div>
+    </section>
+  </template>
+  
+  <style scoped>
+  @import '/src/styles/main.scss';
+  </style>
+  
+<template>
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="faq__block">
+          <h2>FAQ</h2>
+          <div v-for="(faq, index) in faqs" :key="index" class="faq__block__point">
+            <div class="faq__block__point__question" @click="toggleAnswer(index)">
+              <p>{{ faq.question }}</p>
+              <a href="javascript:void(0)">
+                <img src="/images/main-page/down-arrow.svg" alt="" :class="{ rotated: faq.isOpen }">
+              </a>
+            </div>
+            <transition name="fade">
+              <div class="faq__block__point__answer" v-if="faq.isOpen">
+                <p>{{ faq.answer }}</p>
+              </div>
+            </transition>
+          </div>
+        </div>
+      </div>
+    </section>
+  </template>
+  
+  <script>
+  export default {
+    data() {
+      return {
+        faqs: [
+          {
+            question: "1. Как рассчитать стоимость доставки?",
+            answer: "Для расчета стоимости доставки используйте наш калькулятор на главной странице. Укажите тип товара, расстояние и желаемое время доставки, и система автоматически рассчитает стоимость.",
+            isOpen: false,
+          },
+          {
+            question: "2. Как оформить заказ на доставку?",
+            answer: "Чтобы оформить заказ, воспользуйтесь формой на сайте. Выберите тип доставки, заполните необходимые поля (адрес, контактные данные и т.д.), и подтвердите заказ.",
+            isOpen: false,
+          },
+          {
+            question: "3. Какие способы оплаты доступны?",
+            answer: "Мы принимаем оплату банковскими картами (Visa, MasterCard), , а также наличными при получении. Все доступные способы оплаты указаны на странице 'Способы оплаты' на нашем сайте.",
+            isOpen: false,
+          },
+          {
+            question: "4. Как отследить статус моего заказа?",
+            answer: "Войдите в личный кабинет и перейдите в раздел 'Мои заказы'. Здесь вы сможете увидеть текущий статус вашего заказа и трек-номер для отслеживания.",
+            isOpen: false,
+          },
+          {
+            question: "5. Что делать, если возникли проблемы с доставкой?",
+            answer: "Если у вас возникли проблемы с доставкой, пожалуйста, свяжитесь с нашей службой поддержки через форму обратной связи на сайте или по телефону, указанному в разделе 'Контакты'. Наши специалисты помогут решить вашу проблему в кратчайшие сроки.",
+            isOpen: false,
+          },
+        ],
+      };
+    },
+    methods: {
+      toggleAnswer(index) {
+        this.faqs[index].isOpen = !this.faqs[index].isOpen;
+      },
+    },
+  };
+  </script>
+  
+  <style scoped>
+  @import '/src/styles/main.scss';
+  
+  .faq {
+    background: rgb(30, 30, 30);
+    &__block {
+      width: 1160px;
+      padding-bottom: 80px;
+      h2 {
+        padding: 45px 0 60px 0;
+        color: rgb(83, 187, 1);
+        text-align: center;
+      }
+      &__point {
+        border-top: 1px solid rgb(83, 187, 1);
+        border-bottom: 1px solid rgb(83, 187, 1);
+        padding: 29px 21px 29px 30px;
+        p {
+          color: rgb(83, 187, 1);
+          font-size: 20px;
+        }
+        &__question {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          cursor: pointer;
+        }
+        &__answer {
+          padding: 10px 0;
+          p {
+            color: white;
+            font-size: 18px;
+            opacity: 0; /* начальное состояние */
+            transition: opacity 0.3s;
+          }
+        }
+      }
+    }
+  }
+  
+  img.rotated {
+    transform: rotate(180deg);
+    transition: transform 0.3s;
+  }
+  
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 0.3s;
+  }
+  
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+  .fade-enter-active {
+    opacity: 1;
+  }
+  </style>
+  
+<template>
+    <section class="help" id="help">
+        <div class="container">
+            <div class="help__block">
+                <div class="help__block__text">
+                    <h2>Не нашли, что искали?</h2>
+                    <p>Задайте вопрос в чат поддержки прямо сейчас!</p>
+                </div>
+                <img src="/images/main-page/headphones.svg" alt="">
+            </div>
+        </div>
+    </section>
+</template>
+            
+            <style scoped>
+            @import '/src/styles/main.scss';
+            </style>
+<template>
+<section class="partners" id="partners">
+        <div class="container">
+            <h2>Наши партнеры</h2>
+            <div class="partners__block">
+                <img src="/images/main-page/partners-logo-1.svg" alt="">
+                <img src="/images/main-page/partners-logo-2.svg" alt="">
+                <img src="/images/main-page/partners-logo-3.svg" alt="">
+                <img src="/images/main-page/partners-logo-4.svg" alt="">
+                <img src="/images/main-page/partners-logo-5.svg" alt="">
+                <img src="/images/main-page/partners-logo-6.svg" alt="">
+                <img src="/images/main-page/partners-logo-7.svg" alt="">
+                <img src="/images/main-page/partners-logo-8.svg" alt="">
+            </div>
+        </div>
+    </section>
+    </template>
+    
+    <style scoped>
+    @import '/src/styles/main.scss';
+    </style>
+<template>
+    <section class="payment-methods" id="payment-methods">
+      <div class="container">
+        <div class="payment-methods__block">
+          <h2>Способы оплаты</h2>
+          <p>Закажите доставку прямо сейчас!</p>
+          <div class="payment-methods__block__methods">
+            <div class="payment-methods__block__methods__metod">
+              <img src="/images/main-page/cash.svg" alt="">
+              <p>Наличными</p>
+            </div>
+            <div class="payment-methods__block__methods__metod">
+              <img src="/images/main-page/card.svg" alt="">
+              <p>Картой</p>
+            </div>
+            <div class="payment-methods__block__methods__metod">
+              <img src="/images/main-page/preface.svg" alt="">
+              <p>Предоплата</p>
+            </div>
+          </div>
+          <button class="payment-methods__block__button" type="submit" @click="scrollToOrder">Заказать доставку</button>
+        </div>
+      </div>
+    </section>
+  </template>
+  
+  <script>
+  export default {
+    methods: {
+      scrollToOrder() {
+        const element = document.getElementById('delivery-order');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      },
+      handleSubmit() {
+        // Обработка формы
+      }
+    }
+  }
+  </script>
+  
+  <style scoped>
+  @import '/src/styles/main.scss';
+  </style>
+  
+<template>
+<section class="types-goods" id="types-goods">
+        <div class="container">
+            <h2>Доставка любых товаров!</h2>
+            <div class="types-goods__block">
+                <div class="types-goods__block__card">
+                    <h3>интернет заказы</h3>
+                    <img src="/images/main-page/goods-card-1.svg" alt="">
+                </div>
+                <div class="types-goods__block__card">
+                    <h3>Документы</h3>
+                    <img src="/images/main-page/goods-card-2.svg" alt="">
+                </div>
+                <div class="types-goods__block__card">
+                    <h3>подарок</h3>
+                    <img src="/images/main-page/goods-card-3.svg" alt="">
+                </div>
+                <div class="types-goods__block__card">
+                    <h3>мебель</h3>
+                    <img src="/images/main-page/goods-card-4.svg" alt="">
+                </div>
+                <div class="types-goods__block__card">
+                    <h3>одежда</h3>
+                    <img src="/images/main-page/goods-card-5.svg" alt="">
+                </div>
+                <div class="types-goods__block__card">
+                    <h3>электроника</h3>
+                    <img src="/images/main-page/goods-card-6.svg" alt="">
+                </div>
+                <div class="types-goods__block__card">
+                    <h3>бытовая техника</h3>
+                    <img src="/images/main-page/goods-card-7.svg" alt="">
+                </div>
+                <div class="types-goods__block__card">
+                    <h3>Косметика</h3>
+                    <img src="/images/main-page/goods-card-8.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    </template>
+    
+    <style scoped>
+    @import '/src/styles/main.scss';
+    </style>
+<template>
+<section class="welcome" id="welcome">
+        <div class="container">
+            <div class="welcome__block">
+                <div class="welcome__block__desk">
+                    <h1><img src="/images/main-page/sign.svg" alt="">ЭКСПРЕСС ДОСТАВКА ТУДА-СЮДА</h1>
+                    <p>Специализируемся на доставке товаров и грузов от отправителя к получателю.</p>
+                    <p>Обеспечиваем эффективную и надежную транспортировку товаров в указанные места в согласованные сроки.</p>
+                </div>
+                <div class="welcome__block__image">
+                    <img src="/images/main-page/welcome-img.svg" alt="">
+                    <div class="welcome__block__image__discount">
+                        <span>СКИДКА 99%</span>
+                        <p>по промокоду “МПТ”</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<style scoped>
+@import '/src/styles/main.scss';
+</style>
+<template>
+    <section class="profile" id="profile">
+        <div class="container">
+            <div class="profile__navbar">
+                <a href="" class="profile__navbar__btn active-btn">Профиль</a>
+                <a href="" class="profile__navbar__btn">Заказы</a>
+                <a href="" class="profile__navbar__btn">Админ панель</a>
+            </div>
+            <div class="profile__block">
+                <div class="profile__block__left">
+                    <img src="/images/personal-account-page/ava-profile.png" alt="" class="profile__block__left__ava">
+                    <a href="" class="profile__block__left__change-password">Сменить пароль</a>
+                </div>
+                <div class="profile__block__right">
+                    <p class="profile__block__right__name">Иван Иванов</p>
+                    <p class="profile__block__right__email">ivanivanov@gmail.com</p>
+                    <p class="profile__block__right__phone">Телефон</p>
+                    <p class="profile__block__right__role">Роль</p>
+                    <p class="profile__block__right__age">Возраст</p>
+                    <p class="profile__block__right__gender">Пол</p>
+                </div>
+                <a href="" class="profile__block__edit"><img src="/images/personal-account-page/edit-light.svg" alt=""></a>
+            </div>
+        </div>
+    </section>
+</template>
+  
+  <style>
+  @import '/src/styles/personalAccountPage.scss';
+  </style>
+  
+<template>
+<section class="recent-orders" id="recent-orders">
+        <div class="container">
+            <h2>Последние заказы</h2>
+            <div class="recent-orders__order">
+                <div class="recent-orders__order__title">
+                    <p class="recent-orders__order__title__id">ID: 000001</p>
+                    <p class="recent-orders__order__title__date">03.06.2024 17:00</p>
+                    <p class="recent-orders__order__title__payment-status">Оплачен</p>
+                    <a href="" class="recent-orders__order__title__edit"><img src="/images/personal-account-page/edit.svg" alt=""></a>
+                </div>
+                <p class="recent-orders__order__type-of-delivery">Вид доставки: Пешая</p>
+                <p class="recent-orders__order__status">Статус: У курьера</p>
+                <p class="recent-orders__order__courier">
+                    Курьер: Иванов Григорий Сергеевич 
+                    <a href="tel:+79998887766">8-999-888-77-66</a>
+                </p>
+                <p class="recent-orders__order__from">Откуда: г. Москва, Нежинская, 7</p>
+                <p class="recent-orders__order__to">Куда: г. Москва, Нахимовский Пр-т</p>
+                <div class="recent-orders__order__bottom">
+                    <p class="recent-orders__order__bottom__type">Товар: </p>
+                    <p class="recent-orders__order__bottom__price">ИТОГО: 999 ₽</p>
+                </div>
+            </div>
+            <div class="recent-orders__order">
+                <div class="recent-orders__order__title">
+                    <p class="recent-orders__order__title__id">ID: 000001</p>
+                    <p class="recent-orders__order__title__date">03.06.2024 17:00</p>
+                    <p class="recent-orders__order__title__payment-status">Оплачен</p>
+                    <a href="" class="recent-orders__order__title__edit"><img src="/images/personal-account-page/edit.svg" alt=""></a>
+                </div>
+                <p class="recent-orders__order__type-of-delivery">Вид доставки: Пешая</p>
+                <p class="recent-orders__order__status">Статус: У курьера</p>
+                <p class="recent-orders__order__courier">
+                    Курьер: Иванов Григорий Сергеевич 
+                    <a href="tel:+79998887766">8-999-888-77-66</a>
+                </p>
+                <p class="recent-orders__order__from">Откуда: г. Москва, Нежинская, 7</p>
+                <p class="recent-orders__order__to">Куда: г. Москва, Нахимовский Пр-т</p>
+                <div class="recent-orders__order__bottom">
+                    <p class="recent-orders__order__bottom__type">Товар: </p>
+                    <p class="recent-orders__order__bottom__price">ИТОГО: 999 ₽</p>
+                </div>
+            </div>
+            <div class="recent-orders__order">
+                <div class="recent-orders__order__title">
+                    <p class="recent-orders__order__title__id">ID: 000001</p>
+                    <p class="recent-orders__order__title__date">03.06.2024 17:00</p>
+                    <p class="recent-orders__order__title__payment-status">Оплачен</p>
+                    <a href="" class="recent-orders__order__title__edit"><img src="/images/personal-account-page/edit.svg" alt=""></a>
+                </div>
+                <p class="recent-orders__order__type-of-delivery">Вид доставки: Пешая</p>
+                <p class="recent-orders__order__status">Статус: У курьера</p>
+                <p class="recent-orders__order__courier">
+                    Курьер: Иванов Григорий Сергеевич 
+                    <a href="tel:+79998887766">8-999-888-77-66</a>
+                </p>
+                <p class="recent-orders__order__from">Откуда: г. Москва, Нежинская, 7</p>
+                <p class="recent-orders__order__to">Куда: г. Москва, Нахимовский Пр-т</p>
+                <div class="recent-orders__order__bottom">
+                    <p class="recent-orders__order__bottom__type">Товар: </p>
+                    <p class="recent-orders__order__bottom__price">ИТОГО: 999 ₽</p>
+                </div>
+            </div>
+        </div>
+    </section>
+      </template>
+      
+      <style>
+      @import '/src/styles/personalAccountPage.scss';
+      </style>
+      
+<template>
+  <section class="services" id="services">
+      <div class="container">
+          <h1>Услуги</h1>
+          <div class="services__navbar">
+              <a href="#" class="services__navbar__btn active-btn" data-target="walking">Пешком</a>
+              <a href="#" class="services__navbar__btn" data-target="car">Автомобиль</a>
+              <a href="#" class="services__navbar__btn" data-target="cargo">Грузовой</a>
+          </div>
+          <div class="services__block" id="walkingContent">
+            <div class="services__block__title">
+              <img src="/images/services-page/walking-delivery.jpg" alt="">
+              <p>Пешая доставка — это идеальное решение для городских условий, где плотный трафик и пробки могут существенно замедлить передвижение автотранспорта. Наша служба «Туда-Сюда» предоставляет услуги пешей доставки, обеспечивая быстрый и эффективный способ доставить ваши мелкие и средние посылки в самые кратчайшие сроки.</p>
+            </div>
+            <p>Пешая доставка — это идеальное решение для городских условий, где плотный трафик и пробки могут существенно замедлить передвижение автотранспорта. Наша служба «Туда-Сюда» предоставляет услуги пешей доставки, обеспечивая быстрый и эффективный способ доставить ваши мелкие и средние посылки в самые кратчайшие сроки.
+              <br><br>
+              Пешая доставка особенно удобна для доставки документов, мелких посылок и товаров из магазинов. Это экологически чистый способ доставки, который снижает выбросы углекислого газа и не создает шума, что особенно важно в крупных городах с высоким уровнем загрязнения и шумовым фоном.
+              <br><br>
+              Мы обеспечиваем высокий уровень безопасности ваших посылок. Все наши курьеры проходят тщательный отбор и регулярные проверки, что гарантирует надежность и добросовестность при выполнении заказов. Кроме того, мы предлагаем услугу страхования посылок, что дополнительно защищает ваши отправления.</p>
+          </div>
+          <div class="services__block" id="carContent" style="display: none;">
+              <div class="services__block__title">
+                <img src="/images/services-page/car-delivery.jpg" alt="">
+                <p>Автомобильная доставка от «Туда-Сюда» — это быстрый и надежный способ доставить ваши крупные и средние посылки по городу и за его пределы. Наш автопарк состоит из современных автомобилей, оборудованных для безопасной и оперативной доставки, что позволяет нам выполнять заказы любой сложности и объема.</p>
+              </div>
+              <p>Наши водители — это профессионалы с многолетним опытом, которые отлично знают город и пригородные маршруты. Они используют GPS-навигацию для выбора оптимальных маршрутов, что позволяет избежать пробок и сократить время доставки. Мы гарантируем, что ваши заказы будут доставлены в кратчайшие сроки, независимо от погодных условий и дорожной ситуации.
+                <br><br>
+                Автомобильная доставка идеально подходит для транспортировки крупных посылок, бытовой техники, мебели, стройматериалов и других товаров, которые требуют аккуратного обращения и надежного транспортного средства. Наши автомобили оборудованы специальными креплениями и амортизаторами, что позволяет избежать повреждений и сохранить целостность груза во время транспортировки.
+                <br><br>
+                Мы обеспечиваем полную безопасность ваших отправлений. Все наши автомобили оборудованы системами слежения, что позволяет отслеживать местоположение груза в режиме реального времени. Вы будете получать уведомления на каждом этапе доставки, что позволяет контролировать процесс и быть в курсе всех событий.
+                <br><br>
+                Доставка на авто от «Туда-Сюда» — это надежный выбор для тех, кто ценит время и безопасность. Мы гарантируем высокое качество обслуживания и индивидуальный подход к каждому клиенту. Доверьте нам ваши грузы, и мы доставим их быстро и безопасно.</p>
+          </div>
+          <div class="services__block" id="cargoContent" style="display: none;">
+              <div class="services__block__title">
+                <img src="/images/services-page/cargo-delivery.jpg" alt="">
+                <p>Грузовая доставка от «Туда-Сюда» — это профессиональный и надежный сервис для транспортировки крупногабаритных и тяжеловесных грузов. Наш автопарк включает в себя грузовики различных типов и размеров, которые позволяют выполнять заказы любой сложности и объема. Мы предлагаем комплексные решения для бизнеса и частных лиц, обеспечивая оперативную и безопасную доставку.</p>
+              </div>
+              <p>Наши водители и грузчики — это опытные специалисты, прошедшие специальное обучение. Они знают все нюансы транспортировки грузов, включая правильную укладку, крепление и защиту от повреждений. Мы используем современное оборудование и материалы для упаковки, что гарантирует сохранность вашего груза на протяжении всего пути.
+                <br><br>
+                Грузовая доставка идеально подходит для перевозки товаров для магазинов, строительных материалов, мебели, оборудования и других крупногабаритных предметов. Мы предлагаем как разовые услуги, так и долгосрочное сотрудничество для регулярных перевозок. Наши услуги включают погрузочно-разгрузочные работы, что избавляет вас от необходимости искать дополнительных работников.
+                <br><br>
+                Мы понимаем, насколько важна своевременность доставки, особенно для бизнеса. Поэтому мы разработали систему отслеживания, которая позволяет вам контролировать процесс в режиме реального времени. Вы будете получать уведомления в личном кабинете на каждом этапе доставки и сможете оперативно реагировать на любые изменения. Это обеспечивает прозрачность и надежность нашего сервиса.
+                <br><br>
+                Наши грузовые автомобили оборудованы системами слежения и контроля, что позволяет выбирать оптимальные маршруты и избегать пробок. Мы гарантируем доставку в установленные сроки, независимо от условий на дорогах. Все грузы застрахованы, что дополнительно защищает ваши отправления от непредвиденных ситуаций.
+                <br><br> 
+                Грузовая доставка от «Туда-Сюда» — это ваш надежный партнер в вопросах транспортировки. Мы предлагаем индивидуальный подход к каждому клиенту, учитываем все пожелания и требования. Наши услуги позволяют вам сосредоточиться на основном бизнесе, доверив транспортировку профессионалам. Выбирайте качество и надежность вместе с «Туда-Сюда».</p>
+            </div>
+      </div>
+  </section>
+</template>
+
+
+<script>
+export default {
+    data() {
+        return {
+            activeButton: 'walking'
+        };
+    },
+    mounted() {
+        // Инициализация: показываем начально активный контент
+        this.showContent(this.activeButton);
+        
+        // Обработчики событий для переключения контента по клику на кнопки
+        const buttons = document.querySelectorAll('.services__navbar__btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+                const target = button.getAttribute('data-target');
+                this.showContent(target);
+                this.updateActiveButton(button);
+            });
+        });
+    },
+    methods: {
+        showContent(target) {
+            // Скрываем все блоки контента
+            document.querySelectorAll('.services__block').forEach(block => {
+                block.style.display = 'none';
+            });
+            // Показываем выбранный блок контента
+            document.getElementById(`${target}Content`).style.display = 'block';
+            // Обновляем активную кнопку
+            this.activeButton = target;
+        },
+        updateActiveButton(button) {
+            // Снимаем класс активной кнопки со всех кнопок
+            document.querySelectorAll('.services__navbar__btn').forEach(btn => {
+                btn.classList.remove('active-btn');
+            });
+            // Добавляем класс активной кнопки к выбранной кнопке
+            button.classList.add('active-btn');
+        }
+    }
+};
+
+</script>
+            
+            <style scoped>
+            @import '/src/styles/main.scss';
+            </style>
+<template>
+    <section class="tariffs" id="tariffs">
+      <div class="container">
+        <h2>Тарифы доставки</h2>
+        <div class="tariffs__cards">
+          <div class="tariffs__cards__card">
+            <h3>Пешая доставка</h3>
+            <img src="/images/services-page/card1.svg" alt="">
+            <p>80 ₽ км</p>
+          </div>
+          <div class="tariffs__cards__card">
+            <h3>Авто доставка</h3>
+            <img src="/images/services-page/card2.svg" alt="">
+            <p>100 ₽ км</p>
+          </div>
+          <div class="tariffs__cards__card">
+            <h3>Грузовая доставка</h3>
+            <img src="/images/services-page/card3.svg" alt="">
+            <p>140 ₽ км</p>
+          </div>
+        </div>
+        <button class="tariffs__button" @click="handleOrderClick">Заказать доставку</button>
+      </div>
+    </section>
+  </template>
+  
+  <script>
+  export default {
+    methods: {
+      scrollToOrder() {
+        const element = document.getElementById('delivery-order');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      },
+      handleOrderClick() {
+        // Переходим на главную страницу
+        window.location.href = '/'; // Укажите здесь URL вашей главной страницы
+  
+        // После загрузки главной страницы, прокручиваем к нужному разделу
+        setTimeout(() => {
+          this.scrollToOrder();
+        }, 500); // Подождите некоторое время перед прокруткой, чтобы страница успела загрузиться
+      },
+      handleSubmit() {
+        // Обработка формы
+      }
+    }
+  };
+  </script>
+  
+  <style scoped>
+  @import '/src/styles/main.scss';
+  </style>
+  
+<template>
+    <div>
+      <Header />
+      <About />
+      <Footer />
+    </div>
+  </template>
+  
+  <script>
+  import { defineComponent } from 'vue';
+  import Header from './Header.vue';
+  import Footer from './Footer.vue';
+  import About from './about-us-page/About.vue';
+  
+  export default defineComponent({
+    components: {
+      Header,
+      About,
+      Footer
+    },
+  });
+  </script>
+  
+  <style>
+  @import '/src/styles/aboutUsPage.scss'
+  </style>
+  
+<template>
+    <div>
+      <Header />
+      <Profile />
+      <RecentOrders />
+      <Footer />
+    </div>
+  </template>
+  
+  <script>
+  import { defineComponent } from 'vue';
+  import Header from './Header.vue';
+  import Footer from './Footer.vue';
+  import Profile from './personal-account-page/Profile.vue'
+  import RecentOrders from './personal-account-page/RecentOrders.vue'
+  
+  export default defineComponent({
+    components: {
+      Header,
+      Profile,
+      RecentOrders,
+      Footer
+    },
+  });
+  </script>
+  
+  <style>
+  @import '/src/styles/personalAccountPage.scss'
+  </style>
+  
+<template>
+    <footer>
+      <div class="container">
+        <div class="footer__block">
+          <div class="footer__block__company">
+            <p>© 2023 - 2024</p>
+            <p>ООО “Туда-Сюда”</p>
+            <p>ОГРН 1111111111</p>
+            <p>ИНН 1111111111</p>
+            <p>КПП 1111111111</p>
+          </div>
+          <nav class="footer__block__menu">
+            <a href="index.html">Главная</a>
+            <a href="AboutUs.html">О нас</a>
+            <a href="reviews.html">Отзывы</a>
+            <a href="Services.html">Услуги</a>
+            <a href="#" class="open-auth-modal">Личный кабинет</a>
+          </nav>
+          <div class="footer__block__work-schedule">
+            <p>График работы:</p>
+            <p>Круглосуточно</p>
+            <p>Поддержка с 8 до 22</p>
+            <p>Работаем во всех крупных городах России!</p>
+          </div>
+          <div class="footer__block__info">
+            <p>Контакты:</p>
+            <p><a href="mailto:tuda-suda@gmail.com">tuda-suda@gmail.com</a></p>
+            <p><a href="tel:+79998887766">8 (999) 888-77-66</a></p>
+            <p>Адрес: <address>119017, г. Москва, ул. Большая Ордынка, д. 20</address></p>
+          </div>
+        </div>
+        <div class="support-button" 
+           @click="openSupportModal"
+           :class="{ shake: isShaking }">
+        <img src="/images/main-page/support.svg" alt="Поддержка">
+        </div>
+      </div>
+      <!-- Modal -->
+      <div class="modal" :class="{ 'active': isModalVisible }">
+        <div class="modal__content">
+          <div class="modal__header">
+            <h4><img src="/images/main-page/chat.svg" alt=""> Напиши нам, мы на связи!</h4>
+            <span class="modal__close" @click="closeSupportModal">&times;</span>
+          </div>
+          <div class="modal__body">
+            <!-- тут контент -->
+          </div>
+          <div class="modal__footer">
+            <input type="text" placeholder="Введите сообщение...">
+            <a class="modal__footer__btn" href=""><img src="/images/main-page/send.svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </template>
+  
+  <script>
+  export default {
+    data() {
+      return {
+        isModalVisible: false,
+        isShaking: false
+      };
+    },
+    methods: {
+      openSupportModal() {
+        this.isModalVisible = true;
+      },
+      closeSupportModal() {
+        this.isModalVisible = false;
+      },
+      triggerShake() {
+        this.isShaking = true;
+        setTimeout(() => {
+          this.isShaking = false;
+        }, 500); // Duration of the shake animation
+      }
+    },
+    mounted() {
+      this.shakeInterval = setInterval(this.triggerShake, 15000);
+    },
+    beforeDestroy() {
+      clearInterval(this.shakeInterval);
+    }
+  };
+  </script>
+  
+  
+  <style scoped>
+  @import '/src/styles/main.scss';
+
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+  }
+
+  .shake {
+    animation: shake 0.5s;
+  }
+
+
+  .support-button{
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    align-items: center;
+  }
+  
+  .modal.active {
+    display: flex;
+  }
+  
+  .modal__content {
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    color: white;
+    width: 433px;
+    height: 675px;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    border: 3px solid rgb(30, 30, 30);
+  }
+  
+  .modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+  
+  .modal__header h4 {
+    display: flex;
+    margin: 0 auto;
+    color: rgb(232, 232, 232);
+    font-family: Segoe UI;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0%;
+    text-align: left;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .modal__header img{
+    margin-right: 15px;
+  }
+  
+  .modal__close {
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    font-size: 50px;
+    cursor: pointer;
+    color: rgb(83, 187, 1);
+  }
+  
+  .modal__body {
+    padding: 10px;
+    height: 480px;
+    width: 413px;
+    background: rgb(255, 255, 255);
+  }
+  
+  .modal__footer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .modal__footer input {
+    padding: 10px 60px 10px 10px;
+    flex: 1;
+    border: none;
+    border-radius: 0 0 8px 8px;
+    outline: none;
+    height: 52px;
+    border-top: 3px solid rgb(30, 30, 30);
+    color: rgba(30, 30, 30, 0.6);
+    font-family: Segoe UI;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: left;
+  }
+
+  .modal__footer__btn{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .modal__footer button {
+    background-color: #00b300;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  @media (max-width: 431px) {
+    .support-button{
+    position: fixed;
+    right: -40px;
+    bottom: 10px;
+  }
+  .support-button img{
+    width: 50%;
+    height: 50%;
+  }
+  .modal__content {
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    color: white;
+    width: 250px;
+    height: 365px;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    border: 3px solid rgb(30, 30, 30);
+  }
+  .modal__body {
+    padding: 10px;
+    height: 232px;
+    width: 230px;
+    background: rgb(255, 255, 255);
+  }
+  .modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0px;
+  }
+  .modal__header h4 {
+    display: flex;
+    margin: 0 auto;
+    color: rgb(232, 232, 232);
+    font-family: Segoe UI;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0%;
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  .modal__footer input {
+    padding: 5px 40px 10px 5px;
+    flex: 1;
+    border: none;
+    border-radius: 0 0 8px 8px;
+    outline: none;
+    height: 30px;
+    border-top: 3px solid rgb(30, 30, 30);
+    color: rgba(30, 30, 30, 0.6);
+    font-family: Segoe UI;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: left;
+  }
+  .modal__footer__btn{
+    position: absolute;
+    bottom: 12px;
+    right: 0px;
+  }
+  .modal__footer__btn img{
+    width: 50%;
+    height: 50%;
+  }
+  .modal__close {
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    font-size: 35px;
+    cursor: pointer;
+    color: rgb(83, 187, 1);
+  }
+  }
+
+  </style>
+  
+<template>
+  <div>
+    <header>
+      <div class="container">
+        <nav class="main-menu">
+          <ul class="main-menu__left">
+            <li class="main-menu__item">
+              <a href="index.html" class="main-menu__left__logo">
+                <img src="/images/main-page/logo.svg" alt="">
+              </a>
+              <a href="index.html" class="main-menu__left__logo-m">
+                <img src="/images/main-page/ava-mobile.svg" alt="">
+              </a>
+            </li>
+            <li class="main-menu__item">
+              <a href="#" class="main-menu__left__location">
+                <img src="/images/main-page/marker.svg" alt="">Город
+              </a>
+            </li>
+          </ul>
+          <ul class="main-menu__right">
+            <li class="main-menu__item"><a href="index.html" class="main-menu__right__link">Главная</a></li>
+            <li class="main-menu__item"><a href="Services.html" class="main-menu__right__link">Услуги</a></li>
+            <li class="main-menu__item"><a href="AboutUs.html" class="main-menu__right__link">О нас</a></li>
+            <li class="main-menu__item"><a href="reviews.html" class="main-menu__right__link">Отзывы</a></li>
+            <li class="main-menu__item">
+              <a href="#" @click.prevent="openModal" class="main-menu__right__button">
+                <img src="/images/main-page/profile.svg" alt="">Личный кабинет
+              </a>
+            </li>
+          </ul>
+          <div class="main-menu__burger-icon" id="burger-menu" @click="toggleBurgerMenu">&#9776;</div>
+          <ul class="main-menu__burger" v-if="isBurgerMenuOpen">
+            <li class="main-menu__item"><a href="index.html" class="main-menu__right__link">Главная</a></li>
+            <li class="main-menu__item"><a href="Services.html" class="main-menu__right__link">Услуги</a></li>
+            <li class="main-menu__item"><a href="AboutUs.html" class="main-menu__right__link">О нас</a></li>
+            <li class="main-menu__item"><a href="reviews.html" class="main-menu__right__link">Отзывы</a></li>
+            <li class="main-menu__item">
+              <a href="#" @click.prevent="openModal" class="main-menu__right__button">
+                <img src="/images/main-page/profile.svg" alt="">Личный кабинет
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Модальное окно авторизации -->
+    <div class="modal" v-if="isModalVisible">
+      <div class="close" @click="closeModal">&times;</div>
+      <h2>Авторизация</h2>
+      <form @submit.prevent="redirectToPersonalAccount">
+        <input type="email" placeholder="Почта" required v-model="email">
+        <div class="input-wrapper">
+          <input :type="passwordVisible ? 'text' : 'password'" placeholder="Введите пароль" required v-model="password">
+          <div class="password-toggle" @click="togglePasswordVisibility">&#128065;</div>
+        </div>
+        <button type="submit" class="auth-btn">Войти</button>
+      </form>
+      <a href="#" class="register-link" @click.prevent="switchToRegistration">Регистрация</a>
+    </div>
+
+    <!-- Модальное окно регистрации -->
+    <div class="modal" v-if="isRegistrationVisible">
+      <div class="close" @click="closeModal">&times;</div>
+      <h2>Регистрация</h2>
+      <form>
+        <input type="text" placeholder="ФИО" required v-model="fullName">
+        <input type="email" placeholder="Почта" required v-model="email">
+        <input type="tel" placeholder="Телефон" required v-model="phone">
+        <input type="date" placeholder="Дата рождения" required v-model="birthdate">
+        <select required v-model="gender">
+          <option value="" disabled selected>Пол</option>
+          <option value="male">Мужской</option>
+          <option value="female">Женский</option>
+        </select>
+        <div class="input-wrapper">
+          <input :type="passwordVisible ? 'text' : 'password'" placeholder="Введите пароль" required v-model="password">
+          <div class="password-toggle" @click="togglePasswordVisibility">&#128065;</div>
+        </div>
+        <div class="input-wrapper">
+          <input :type="passwordVisible ? 'text' : 'password'" placeholder="Повторите пароль" required v-model="confirmPassword">
+          <div class="password-toggle" @click="togglePasswordVisibility">&#128065;</div>
+        </div>
+        <div class="terms">
+          Регистрируясь, я соглашаюсь с Правилами использования и Политикой по обработке персональных данных.
+        </div>
+        <button type="submit" class="register-btn">Зарегистрироваться</button>
+      </form>
+      <a href="#" class="register-link" @click.prevent="switchToLogin">Войти</a>
+    </div>
+  </div>
+</template>
+
+
+<script>
+export default {
+  data() {
+    return {
+      isModalVisible: false,
+      isRegistrationVisible: false,
+      email: '',
+      fullName: '',
+      phone: '',
+      birthdate: '',
+      gender: '',
+      password: '',
+      confirmPassword: '',
+      passwordVisible: false,
+      city: '',  // Добавлено свойство city
+      isBurgerMenuOpen: false  // Добавляем состояние для бургер-меню
+    };
+  },
+  methods: {
+    openModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+      this.isRegistrationVisible = false;
+      // Очистка данных при закрытии модального окна
+      this.email = '';
+      this.fullName = '';
+      this.phone = '';
+      this.birthdate = '';
+      this.gender = '';
+      this.password = '';
+      this.confirmPassword = '';
+    },
+    togglePasswordVisibility() {
+      this.passwordVisible = !this.passwordVisible;
+    },
+    switchToRegistration() {
+      this.isRegistrationVisible = true;
+    },
+    switchToLogin() {
+      this.isRegistrationVisible = false;
+    },
+    openModalFromFooter() {
+      // Функция для открытия модального окна из подвала
+      this.isModalVisible = true;
+      this.isRegistrationVisible = false; // Убедимся, что окно регистрации закрыто
+    },
+    redirectToPersonalAccount() {
+      window.location.href = 'personal-account.html'; // Перенаправление на personal-account.html
+    },
+    toggleBurgerMenu() {
+      this.isBurgerMenuOpen = !this.isBurgerMenuOpen; // Переключаем состояние бургер-меню
+    }
+  },
+  mounted() {
+    // Инициализация слушателя для открытия модального окна из подвала
+    const authLinkFooter = document.querySelector('.open-auth-modal-footer');
+    if (authLinkFooter) {
+      authLinkFooter.addEventListener('click', (event) => {
+        event.preventDefault();
+        this.openModalFromFooter();
+      });
+    }
+
+    // Подключаем jQuery перед загрузкой скрипта
+    const jqueryScript = document.createElement('script');
+    jqueryScript.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
+    jqueryScript.onload = () => {
+      console.log('jQuery загружен.');
+      
+      // Подключаем ваш скрипт после загрузки jQuery
+      const headerScript = document.createElement('script');
+      headerScript.src = 'src/scripts/headerScript.js'; // Замените на актуальный путь
+      headerScript.onload = () => {
+        console.log('headerScript.js загружен.');
+      };
+      document.head.appendChild(headerScript);
+    };
+    document.head.appendChild(jqueryScript);
+  }
+};
+</script>
+
+
+
+
+
+<style scoped>
+@import '/src/styles/main.scss';
+
+.modal {
+  background-color: #1c1c1c;
+  padding: 50px 40px 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 354px;
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.modal h2 {
+  color: rgb(232, 232, 232);
+  font-family: Segoe UI;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 64px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.modal .terms {
+  color: rgb(232, 232, 232);
+  font-family: Segoe UI;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: left;
+  max-width: 353px;
+}
+
+.modal .close {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  font-size: 50px;
+  cursor: pointer;
+  color: rgb(83, 187, 1);
+}
+
+.modal input {
+  box-sizing: border-box;
+  border: 1px solid rgb(213, 212, 212);
+  border-radius: 8px;
+  background: rgb(232, 232, 232);
+  width: 353px;
+  height: 42px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  color: rgba(30, 30, 30, 0.6);
+  font-family: Segoe UI;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.modal select {
+  box-sizing: border-box;
+  border: 1px solid rgb(213, 212, 212);
+  border-radius: 8px;
+  background: rgb(232, 232, 232);
+  width: 353px;
+  height: 42px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  color: rgba(30, 30, 30, 0.6);
+  font-family: Segoe UI;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.modal .auth-btn, .register-btn {
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background: rgb(83, 187, 1);
+  width: 353px;
+  height: 67px;
+  background-color: #00b300;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  color: rgb(30, 30, 30);
+  font-family: Segoe UI;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 14px;
+}
+
+.modal .register-link {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: rgb(83, 187, 1);
+  font-family: Segoe UI;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.modal .password-toggle {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  cursor: pointer;
+  color: rgb(83, 187, 1);
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+input:focus, select:focus {
+    outline: none;
+}
+
+@media (max-width: 431px) {
+  .modal {
+  background-color: #1c1c1c;
+  padding: 20px 10px 5px 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 354px;
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.modal h2 {
+  color: rgb(232, 232, 232);
+  font-family: Segoe UI;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.modal .terms {
+  color: rgb(232, 232, 232);
+  font-family: Segoe UI;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: left;
+  max-width: 353px;
+}
+
+.modal .close {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  font-size: 50px;
+  cursor: pointer;
+  color: rgb(83, 187, 1);
+}
+
+.modal input {
+  box-sizing: border-box;
+  border: 1px solid rgb(213, 212, 212);
+  border-radius: 8px;
+  background: rgb(232, 232, 232);
+  width: 353px;
+  height: 42px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  color: rgba(30, 30, 30, 0.6);
+  font-family: Segoe UI;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.modal select {
+  box-sizing: border-box;
+  border: 1px solid rgb(213, 212, 212);
+  border-radius: 8px;
+  background: rgb(232, 232, 232);
+  width: 353px;
+  height: 42px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  color: rgba(30, 30, 30, 0.6);
+  font-family: Segoe UI;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.modal .auth-btn, .register-btn {
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background: rgb(83, 187, 1);
+  width: 353px;
+  height: 50px;
+  background-color: #00b300;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  color: rgb(30, 30, 30);
+  font-family: Segoe UI;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 14px;
+}
+
+.modal .register-link {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: rgb(83, 187, 1);
+  font-family: Segoe UI;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0%;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.modal .password-toggle {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  cursor: pointer;
+  color: rgb(83, 187, 1);
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+input:focus, select:focus {
+    outline: none;
+}
+}
+
+</style>
+<template>
+  <div>
+    <Header />
+    <Welcome />
+    <DeliveryOrder />
+    <TypesGoods />
+    <Partners />
+    <PaymentMethods />
+    <Faq />
+    <Help />
+    <Footer />
+  </div>
+</template>
+
+<script>
+import { defineComponent } from 'vue';
+import Header from './Header.vue';
+import Welcome from './main-page/Welcome.vue';
+import DeliveryOrder from './main-page/Delivery-order.vue';
+import TypesGoods from './main-page/Types-goods.vue';
+import Partners from './main-page/Partners.vue';
+import PaymentMethods from './main-page/Payment-methods.vue';
+import Faq from './main-page/Faq.vue';
+import Help from './main-page/Help.vue';
+import Footer from './Footer.vue';
+
+export default defineComponent({
+  components: {
+    Header,
+    Welcome,
+    DeliveryOrder,
+    TypesGoods,
+    Partners,
+    PaymentMethods,
+    Faq,
+    Help,
+    Footer
+  },
+});
+</script>
+
+<style scoped>
+@import '/src/styles/main.scss';
+</style>
+<template>
+    <section>
+      <Header />
+      <div class="reviews" id="reviews">
+        <div class="container">
+          <h1>Отзывы клиентов</h1>
+          <div class="reviews__review">
+            <div class="reviews__review__profile">
+              <img src="/images/reviews-page/ava1.png" alt="" class="ava">
+              <p class="nick">Иван Иванов</p>
+              <p class="date">03.06.2023</p>
+            </div>
+            <p class="content">Пешая доставка — это идеальное решение для городских условий, где плотный трафик и пробки могут существенно замедлить передвижение автотранспорта. Наша служба «Туда-Сюда» предоставляет услуги пешей доставки, обеспечивая быстрый и </p>
+          </div>
+          <div class="reviews__review">
+            <div class="reviews__review__profile">
+              <img src="/images/reviews-page/ava2.png" alt="" class="ava">
+              <p class="nick">Денис Рубцов</p>
+              <p class="date">02.06.2023</p>
+            </div>
+            <p class="content">Очень доволен услугами пешей доставки от «Туда-Сюда». Курьер прибыл точно в назначенное время, несмотря на плотный трафик. Вежливое общение и аккуратная доставка — то, что нужно для городской суеты. Рекомендую всем!</p>
+          </div>
+          <div class="reviews__review">
+            <div class="reviews__review__profile">
+              <img src="/images/reviews-page/ava3.png" alt="" class="ava">
+              <p class="nick">Лера Булатова</p>
+              <p class="date">01.06.2023</p>
+            </div>
+            <p class="content">Отличный сервис! Пешая доставка от «Туда-Сюда» — это спасение в часы пик, когда передвигаться на автомобиле невозможно. Курьер был очень пунктуален и доставил посылку быстрее, чем я ожидал. Обязательно буду пользоваться снова.</p>
+          </div>
+          <div class="reviews__review">
+            <div class="reviews__review__profile">
+              <img src="/images/reviews-page/ava4.png" alt="" class="ava">
+              <p class="nick">Настя Золотова</p>
+              <p class="date">24.05.2023</p>
+            </div>
+            <p class="content">Благодарю службу «Туда-Сюда» за оперативную пешую доставку. Курьер добрался до меня быстро, несмотря на все сложности городского трафика. Очень удобный и надежный способ доставки. Рекомендую всем, кто ценит свое время!</p>
+          </div>
+          <div class="reviews__review">
+            <div class="reviews__review__profile">
+              <img src="/images/reviews-page/ava5.png" alt="" class="ava">
+              <p class="nick">Аня Тучкова</p>
+              <p class="date">23.05.2023</p>
+            </div>
+            <p class="content">Пешая доставка от «Туда-Сюда» оказалась на высоте. Курьер был вежлив, аккуратен и доставил посылку вовремя. Приятно удивлена качеством обслуживания. Обязательно воспользуюсь вашими услугами еще раз!</p>
+          </div>
+          <div class="reviews__review">
+            <div class="reviews__review__profile">
+              <img src="/images/reviews-page/ava6.png" alt="" class="ava">
+              <p class="nick">Саша Чернигов</p>
+              <p class="date">20.05.2023</p>
+            </div>
+            <p class="content">Впечатлен скоростью пешей доставки от «Туда-Сюда». В условиях городского трафика это просто находка! Курьер был очень профессионален и добрался до меня в кратчайшие сроки. Всем рекомендую этот сервис!</p>
+          </div>
+          <div class="reviews__button">
+            <a href="" class="reviews__button__btn">Показать еще</a>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </section>
+  </template>
+  
+  <script>
+  import { defineComponent } from 'vue';
+  import Header from './Header.vue';
+  import Footer from './Footer.vue';
+  
+  export default defineComponent({
+    components: {
+      Header,
+      Footer
+    },
+  });
+  </script>
+  
+  <style scoped>
+  @import '/src/styles/reviews-page.scss';
+  </style>
+  
+<template>
+    <div>
+      <Header />
+      <services />
+      <tariffs />
+      <help />
+      <Footer />
+    </div>
+  </template>
+  
+  <script>
+  import { defineComponent } from 'vue';
+  import Header from './Header.vue';
+  import Help from './main-page/Help.vue';
+  import Footer from './Footer.vue';
+  import services from './services-page/services.vue'
+  import tariffs from './services-page/tariffs.vue'
+  
+  export default defineComponent({
+    components: {
+      Header,
+      services,
+      tariffs,
+      Help,
+      Footer
+    },
+  });
+  </script>
+  
+  <style>
+  @import '/src/styles/services-page.scss';
+  </style>
+  
